@@ -5,7 +5,7 @@
 @section('content')
     <!-- Page Content -->
     <div class="content">
-        <h2 class="content-heading"Transportverwaltung</h2>
+        <h2 class="content-heading">Termin </h2>
         <div class="block">
             <div class="block-header block-header-default">
                 <h3 class="block-title">Erledigt </h3>
@@ -31,8 +31,8 @@
                             <td>{{$item->comment}}</td>
                             <td>{{$item->date}}</td>
                             <td>
-                                <a href="{{route("transports.edit",['transport'=>$item->id])}}" class="btn btn-primary">Edit</a>
-                                <a href="{{route("transports.destroy",['transport'=>$item->id])}}" class="btn btn-danger">Delete</a>
+                                <a href="{{route("appointments.edit",['appointment'=>$item->id])}}" class="btn btn-primary">Edit</a>
+                                <a href="{{route("appointments.destroy",['appointment'=>$item->id])}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @empty

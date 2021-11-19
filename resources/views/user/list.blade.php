@@ -5,20 +5,19 @@
 @section('content')
     <!-- Page Content -->
     <div class="content">
-        <h2 class="content-heading"Transportverwaltung</h2>
+        <h2 class="content-heading">Users</h2>
         <div class="block">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Erledigt </h3>
+                <h3 class="block-title">List </h3>
             </div>
             <div class="block-content block-content-full">
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                     <thead>
                     <tr>
                         <th>SrNo</th>
-                        <th>Priority</th>
-                        <th>Assignment</th>
-                        <th>Comment</th>
-                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -26,13 +25,12 @@
                     @forelse($list as $key=>$item)
                         <tr>
                             <td>{{++$key}}</td>
-                            <td>{{$item->priority}}</td>
-                            <td>{{$item->assignment}}</td>
-                            <td>{{$item->comment}}</td>
-                            <td>{{$item->date}}</td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->created_at}}</td>
                             <td>
-                                <a href="{{route("transports.edit",['transport'=>$item->id])}}" class="btn btn-primary">Edit</a>
-                                <a href="{{route("transports.destroy",['transport'=>$item->id])}}" class="btn btn-danger">Delete</a>
+                                <a href="{{route("users.edit",['user'=>$item->id])}}" class="btn btn-primary">Edit</a>
+                                <a href="{{route("users.destroy",['user'=>$item->id])}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @empty

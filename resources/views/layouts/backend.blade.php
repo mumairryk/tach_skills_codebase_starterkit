@@ -111,40 +111,44 @@
               <li class="nav-main-heading">
                 <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
               </li>
+                <li class="{{request()->routeIs("users*") ? ' open' : '' }}">
 
-                <li>
-
-                    <a href="#">
+                    <a  class="nav-submenu" data-toggle="nav-submenu" href="#">
                         <i class="si si-user"></i><span class="sidebar-mini-hide">Users</span>
                     </a>
+                    <ul>
+                        <li>
+                            <a class="{{request()->route()->getName()=="users.create" ? ' active' : '' }}" href="{{route("users.create")}}">Add New</a>
+                        </li>
+                        <li>
+                            <a class="{{request()->route()->getName()=="users.index" ? ' active' : '' }}" href="{{route("users.index")}}">List</a>
+                        </li>
+                    </ul>
                 </li>
-              <li class="{{ request()->is('transportverwaltung/*') ? ' open' : '' }}">
+              <li class="{{request()->routeIs("transports*") ? ' open' : '' }}">
                 <a class="nav-submenu" data-toggle="nav-submenu" href="#">
                     <i class="si si-bulb"></i><span class="sidebar-mini-hide">Transportverwaltung</span>
                 </a>
                 <ul>
                   <li>
-                    <a class="{{ request()->is('transportverwaltung/order/new') ? ' active' : '' }}" href="{{route("transport.create",1)}}">Neuer Auftrag</a>
+                    <a class="{{request()->route()->getName()=="transports.create" ? ' active' : '' }}" href="{{route("transports.create")}}">Neuer Auftrag</a>
                   </li>
                   <li>
-                    <a class="{{ request()->is('transportverwaltung/order/completed') ? ' active' : '' }}" href="{{route("transport.index",1)}}">Erledigt</a>
+                    <a class="{{request()->route()->getName()=="transports.index" ? ' active' : '' }}" href="{{route("transports.index")}}">Erledigt</a>
                   </li>
 
                 </ul>
               </li>
-
-
-
-               <li class="{{ request()->is('termin/*') ? ' open' : '' }}">
+               <li class="{{ request()->routeIs("appointments*") ? ' open' : '' }}">
                 <a class="nav-submenu" data-toggle="nav-submenu" href="#">
                     <i class="si si-energy"></i><span class="sidebar-mini-hide">Termin / Auftrag</span>
                 </a>
                 <ul>
                   <li>
-                    <a class="{{ request()->is('termin/order/new') ? ' active' : '' }}" href="{{route("transport.create",2)}}">Neuer Auftrag</a>
+                    <a class="{{ request()->route()->getName()=="appointments.create" ? ' active' : '' }}" href="{{route("appointments.create")}}">Neuer Auftrag</a>
                   </li>
                   <li>
-                    <a class="{{ request()->is('termin/order/completed') ? ' active' : '' }}" href="{{route("transport.index",2)}}">Erledigt</a>
+                    <a class="{{ request()->route()->getName()=="appointments.index" ? ' active' : '' }}" href="{{route("appointments.index")}}">Erledigt</a>
                   </li>
 
                 </ul>
