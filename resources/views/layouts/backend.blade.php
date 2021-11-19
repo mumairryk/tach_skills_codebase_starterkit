@@ -111,6 +111,13 @@
               <li class="nav-main-heading">
                 <span class="sidebar-mini-visible">VR</span><span class="sidebar-mini-hidden">Various</span>
               </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="si si-user"></i><span class="sidebar-mini-hide">Users</span>
+                    </a>
+                </li>
               <li class="{{ request()->is('transportverwaltung/*') ? ' open' : '' }}">
                 <a class="nav-submenu" data-toggle="nav-submenu" href="#">
                     <i class="si si-bulb"></i><span class="sidebar-mini-hide">Transportverwaltung</span>
