@@ -117,10 +117,10 @@
                 </a>
                 <ul>
                   <li>
-                    <a class="{{ request()->is('transportverwaltung/order/new') ? ' active' : '' }}" href="{{route("invoice.create",1)}}">Neuer Auftrag</a>
+                    <a class="{{ request()->is('transportverwaltung/order/new') ? ' active' : '' }}" href="{{route("transport.create",1)}}">Neuer Auftrag</a>
                   </li>
                   <li>
-                    <a class="{{ request()->is('transportverwaltung/order/completed') ? ' active' : '' }}" href="{{route("invoice.index",1)}}">Erledigt</a>
+                    <a class="{{ request()->is('transportverwaltung/order/completed') ? ' active' : '' }}" href="{{route("transport.index",1)}}">Erledigt</a>
                   </li>
 
                 </ul>
@@ -134,10 +134,10 @@
                 </a>
                 <ul>
                   <li>
-                    <a class="{{ request()->is('termin/order/new') ? ' active' : '' }}" href="{{route("invoice.create",2)}}">Neuer Auftrag</a>
+                    <a class="{{ request()->is('termin/order/new') ? ' active' : '' }}" href="{{route("transport.create",2)}}">Neuer Auftrag</a>
                   </li>
                   <li>
-                    <a class="{{ request()->is('termin/order/completed') ? ' active' : '' }}" href="{{route("invoice.index",2)}}">Erledigt</a>
+                    <a class="{{ request()->is('termin/order/completed') ? ' active' : '' }}" href="{{route("transport.index",2)}}">Erledigt</a>
                   </li>
 
                 </ul>

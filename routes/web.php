@@ -29,12 +29,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
         return view('dashboard');
     });
 
-    Route::get('/invoice/{id}/destroy', [\App\Http\Controllers\InvoiceController::class,'destroy'])->name('invoice.destroy');
-    Route::post('/invoice/{type}/store', [\App\Http\Controllers\InvoiceController::class,'store'])->name('invoice.store');
-    Route::get('/invoice/{id}/edit', [\App\Http\Controllers\InvoiceController::class,'edit'])->name('invoice.edit');
-    Route::put('/invoice/{id}/update', [\App\Http\Controllers\InvoiceController::class,'update'])->name('invoice.update');
-    Route::get('/invoice/{type}', [\App\Http\Controllers\InvoiceController::class,'index'])->name('invoice.index');
-    Route::get('/invoice/{type}/create', [\App\Http\Controllers\InvoiceController::class,'create'])->name('invoice.create');
 
 
 

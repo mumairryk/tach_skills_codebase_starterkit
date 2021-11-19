@@ -31,8 +31,8 @@
                             <td>{{$item->comment}}</td>
                             <td>{{$item->date}}</td>
                             <td>
-                                <a href="{{route("invoice.edit",['id'=>$item->id])}}" class="btn btn-primary">Edit</a>
-                                <a href="{{route("invoice.edit",['id'=>$item->id])}}" class="btn btn-danger">Delete</a>
+                                <a href="{{route("transport.edit",['id'=>$item->id])}}" class="btn btn-primary">Edit</a>
+                                <a href="{{route("transport.edit",['id'=>$item->id])}}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @empty
