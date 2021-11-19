@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8012112a5d1ca8cd98a281d684269474",
+    "content-hash": "ae90209990ec92e0925152b3a4b1c5b5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,64 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
+        },
+        {
+            "name": "bgaze/bootstrap-form",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bgaze/bootstrap-form.git",
+                "reference": "f1df402cf92b9ee9a71cd8ba176c8adeda5c87d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bgaze/bootstrap-form/zipball/f1df402cf92b9ee9a71cd8ba176c8adeda5c87d7",
+                "reference": "f1df402cf92b9ee9a71cd8ba176c8adeda5c87d7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": ">=5.8",
+                "illuminate/support": ">=5.8",
+                "laravelcollective/html": ">=5.8",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bgaze\\BootstrapForm\\BootstrapFormServiceProvider"
+                    ],
+                    "aliases": {
+                        "BF": "Bgaze\\BootstrapForm\\Support\\Facades\\BF"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bgaze\\BootstrapForm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bgaze",
+                    "email": "benjamin@bgaze.fr"
+                }
+            ],
+            "description": "Bootstrap 4 forms builder for Laravel 5.8+",
+            "keywords": [
+                "bootstrap",
+                "form",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/bgaze/bootstrap-form/issues",
+                "source": "https://github.com/bgaze/bootstrap-form/tree/v1.0.9"
+            },
+            "time": "2020-06-06T05:28:10+00:00"
         },
         {
             "name": "brick/math",
@@ -1229,6 +1287,78 @@
                 "source": "https://github.com/laravel/ui/tree/v3.3.2"
             },
             "time": "2021-11-05T08:25:44+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v6.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "ae15b9c4bf918ec3a78f092b8555551dd693fde3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/ae15b9c4bf918ec3a78f092b8555551dd693fde3",
+                "reference": "ae15b9c4bf918ec3a78f092b8555551dd693fde3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0",
+                "illuminate/session": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "illuminate/view": "^6.0|^7.0|^8.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "time": "2020-12-15T20:20:05+00:00"
         },
         {
             "name": "league/commonmark",
@@ -7800,7 +7930,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3"
+        "php": "^7.3|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
