@@ -102,4 +102,8 @@ class AppointmentController extends Controller
         $md->delete();
         return redirect()->route("appointments.index")->with('success','Data Deleted');
     }
+
+    public function calendar(){
+        return view('appointment.calendar');
+    }
 }

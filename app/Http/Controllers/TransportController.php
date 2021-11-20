@@ -101,4 +101,9 @@ class TransportController extends Controller
         $md->delete();
         return redirect()->route("transports.index")->with('success','Data Deleted');
     }
+
+
+    public function calendar(){
+        return view('transport.calendar');
+    }
 }

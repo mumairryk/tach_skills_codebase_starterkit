@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('css_after')
-    <link rel="stylesheet" href="{{asset('assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
-@stop
+    <link rel="stylesheet" href="{{asset('js/plugins/flatpickr/flatpickr.min.css')}}">
+@endsection
 @section('content')
 <div class="content">
     <h2 class="content-heading">Auftrag</h2>
@@ -17,7 +17,7 @@
                 @select('priority', 'Select Priority *',  [1=>'1',2=>'2',3=>'3',4=>'4'])
                 @text('assignment','Assigment *')
                 @textarea('comment')
-                @date('date','Select Date *')
+                @date('date','Select Date *', null, ['class' => 'js-flatpickr form-control bg-white'])
                 @submit('Save')
                 @close
         </div>
@@ -26,8 +26,8 @@
 
 @stop
 @section('js_after')
-    <script src="{{asset('assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-    <script>jQuery(function () {
-            Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']);
-        });</script>
-@stop
+
+    <script src="{{asset('js/plugins/flatpickr/flatpickr.min.js')}}"></script>
+    <script>jQuery(function(){Codebase.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'rangeslider', 'tags-inputs']);});</script>
+
+@endsection
