@@ -104,6 +104,44 @@ class AppointmentController extends Controller
     }
 
     public function calendar(){
-        return view('appointment.calendar');
+        $data_set = Appointment::selectRaw('id,priority,assignment as title,comment,date as start')->get();
+        $data=array();
+        foreach ($data_set as $item)
+        {
+            if ($item->priority==1)
+            {
+                $color="#9ccc65";
+            }
+            elseif ($item->priority==2)
+            {
+                $color="#f7e8b8";
+            }
+            elseif ($item->priority==3)
+            {
+                $color="#b5e2f7";
+            }
+            else
+            {
+                $color="#ef5350";
+            }
+            $data[]=array('id'=>$item->id,'priority'=>$item->priority,'title'=>$item->title,'comment'=>$item->comment,'date'=>$item->start,'color'=>$color);
+        }
+        return view('appointment.calendar',compact('data'));
+    }
+    public function ajaxSubmit(Request $request)
+    {
+
+        if ($request->has('id') && $request->id!='')
+        {
+            $md = Appointment::findOrFail($request->id);
+            $md->update($request->all());
+            return redirect()->back()->with('success','Data Updated');
+
+        }
+        else
+        {
+            $md = Appointment::create($request->except('id'));
+            return redirect()->back()->with('success','Data Saved');
+        }
     }
 }

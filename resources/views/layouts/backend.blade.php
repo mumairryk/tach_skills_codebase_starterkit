@@ -323,13 +323,69 @@
   </div>
   <!-- END Page Container -->
 
+  @if(Session::has('success'))
+      <div class="toast" data-autohide="false">
+          <div class="toast-header">
+              <strong class="mr-auto text-primary">Toast Header</strong>
+              <small class="text-muted">5 mins ago</small>
+              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+          </div>
+          <div class="toast-body">
+              Some text inside the toast body
+          </div>
+      </div>
+      </div>
+  @endif
   <!-- Codebase Core JS -->
   <script src="{{ mix('js/codebase.app.js') }}"></script>
-
+  <script src="{{asset('/js/plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
   <!-- Laravel Scaffolding JS -->
   <!-- <script src="{{ mix('js/laravel.app.js') }}"></script> -->
 
   @yield('js_after')
+  <script>
+      $(document).ready(function () {
+          jQuery(function () {
+              Codebase.helpers('notify');
+          });
+          @if(Session::has('success'))
+          Codebase.helpers('notify', {
+              align: 'right',             // 'right', 'left', 'center'
+              from: 'top',                // 'top', 'bottom'
+              type: 'success',               // 'info', 'success', 'warning', 'danger'
+              icon: 'fa fa-check mr-5',    // Icon class
+              message: "{!! Session::get('success') !!}"
+          });
+          @endif
+          @if(Session::has('error'))
+          Codebase.helpers('notify', {
+              align: 'right',             // 'right', 'left', 'center'
+              from: 'top',                // 'top', 'bottom'
+              type: 'danger',               // 'info', 'success', 'warning', 'danger'
+              icon: 'fa fa-times mr-5',    // Icon class
+              message: "{!! Session::get('error') !!}"
+          });
+          @endif
+          @if(Session::has('info'))
+          Codebase.helpers('notify', {
+              align: 'right',             // 'right', 'left', 'center'
+              from: 'top',                // 'top', 'bottom'
+              type: 'info',               // 'info', 'success', 'warning', 'danger'
+              icon: 'fa fa-info-circle mr-5',    // Icon class
+              message: "{!! Session::get('info') !!}"
+          });
+          @endif
+          @if(Session::has('warning'))
+          Codebase.helpers('notify', {
+              align: 'right',             // 'right', 'left', 'center'
+              from: 'top',                // 'top', 'bottom'
+              type: 'warning',               // 'info', 'success', 'warning', 'danger'
+              icon: 'fa fa-warning mr-5',    // Icon class
+              message: "{!! Session::get('warning') !!}"
+          });
+          @endif
+      });
+  </script>
 </body>
 
 </html>
