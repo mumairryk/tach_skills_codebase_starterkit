@@ -27,6 +27,16 @@
                     <div class="col-md-6">
                         @radios('gender','Gender',['Male'=>'Male','Female'=>'Female','Other'=>'Other'],null,['custom' => true, 'inline' => true])
                     </div>
+                    <div class="col-md-12">
+                        @if (isset($row))
+                            @php $user_roles = \Illuminate\Support\Facades\DB::table('role_user')->select('role_id')->where('user_id','=',$row->id)->pluck('role_id','role_id')->toArray()   @endphp
+
+                            @select('role_id[]','Select Role',$repository->roles(),$user_roles,['required'=>'required','multiple'=>'multiple','class'=>'form-control select2'])
+
+                        @else
+                            @select('role_id[]','Select Role',$repository->roles(),null,['required'=>'required','multiple'=>'multiple','class'=>'form-control select2'])
+                        @endif
+                    </div>
                 @if(!isset($row))
                         <div class="col-md-6">
                             @password('password')

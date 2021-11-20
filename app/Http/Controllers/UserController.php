@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use App\Repository\UserRepository;
 class UserController extends Controller
 {
+    private $repository;
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.crud');
+        $repository = $this->repository;
+        return view('user.crud',compact('repository'));
     }
 
     /**
@@ -43,7 +49,7 @@ class UserController extends Controller
             'password'=>'required',
         ]);
         $request->merge(['password'=>Hash::make($request->password)]);
-        $md = User::create($request->all());
+        $model = User::create($request->all())->roles()->sync($request->role_id,false);;
         return redirect()->route("users.index")->with('success','Data Saved');
     }
 
@@ -67,7 +73,8 @@ class UserController extends Controller
     public function edit( $user)
     {
         $row = User::findOrFail($user);
-        return view("user.crud",compact('row'));
+        $repository = $this->repository;
+        return view("user.crud",compact('row','repository'));
     }
 
     /**
@@ -81,6 +88,7 @@ class UserController extends Controller
     {
         $md = User::findOrFail($user);
         $md->update($request->all());
+        $md->roles()->sync($request->role_id,true);
         return redirect()->route("users.index")->with('success','Data Saved');
 
 

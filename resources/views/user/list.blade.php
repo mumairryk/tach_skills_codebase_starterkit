@@ -17,6 +17,8 @@
                         <th>SrNo</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
@@ -27,6 +29,8 @@
                             <td>{{++$key}}</td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
+                            <td>{{$item->gender}}</td>
+                            <td>{{$item->phone}}</td>
                             <td>{{$item->created_at}}</td>
                             <td>
                                 <a href="{{route("users.edit",['user'=>$item->id])}}" class="btn btn-primary">Edit</a>
