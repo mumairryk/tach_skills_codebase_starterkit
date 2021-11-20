@@ -11,10 +11,10 @@
             @else
                 @open(['model' => $row,'method' => 'PUT','enctype'=>"multipart/form-data", 'route' => ['transports.update',['transport'=>$row->id]],'novalidate' => true])
             @endif
-                @select('priority', null, [1=>'1',2=>'2',3=>'3',4=>'4'])
-                @text('assignment')
+                @select('priority', 'Select Priority *', [1=>'1',2=>'2',3=>'3',4=>'4'])
+                @text('assignment','Assigment *')
                 @textarea('comment')
-                @date('date')
+                @date('date','Select Date *')
                 @submit('Save')
                 @close
         </div>

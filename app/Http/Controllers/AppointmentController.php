@@ -40,6 +40,7 @@ class AppointmentController extends Controller
         $this->validate($request,[
             'priority'=>'required',
             'date'=>'required',
+            'assignment'=>'required',
         ]);
         $md = Appointment::create($request->all());
         return redirect()->route("appointments.index")->with('success','Data Saved');
@@ -80,6 +81,7 @@ class AppointmentController extends Controller
         $this->validate($request,[
             'priority'=>'required',
             'date'=>'required',
+            'assignment'=>'required',
         ]);
         $md = Appointment::findOrFail($appointment);
         $md->update($request->all());

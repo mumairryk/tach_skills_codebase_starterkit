@@ -38,6 +38,7 @@ class TransportController extends Controller
     {
         $this->validate($request,[
             'priority'=>'required',
+            'assignment'=>'required',
             'date'=>'required',
         ]);
         $md = Transport::create($request->all());
@@ -79,6 +80,7 @@ class TransportController extends Controller
         $this->validate($request,[
             'priority'=>'required',
             'date'=>'required',
+            'assignment'=>'required',
         ]);
         $md = Transport::findOrFail($transport);
         $md->update($request->all());
