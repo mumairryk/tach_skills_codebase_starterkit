@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,10 +45,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
 
     /** Role Routes */
     Route::get('roles',[\App\Http\Controllers\RoleController::class,'index'])->name('roles');
+    Route::get('role/create',[\App\Http\Controllers\RoleController::class,'create'])->name('roles.create');
     Route::post('role/store',[\App\Http\Controllers\RoleController::class,'store'])->name('roles.store');
     Route::get('role/edit/{id}',[\App\Http\Controllers\RoleController::class,'edit'])->name('roles.edit');
     Route::patch('role/{id}/update',[\App\Http\Controllers\RoleController::class,'update'])->name('roles.update');
-    Route::delete('role/destroy/{id}',[\App\Http\Controllers\RoleController::class,'destroy'])->name('roles.destroy');
+    Route::get('role/destroy/{id}',[\App\Http\Controllers\RoleController::class,'destroy'])->name('roles.destroy');
 
 
 });

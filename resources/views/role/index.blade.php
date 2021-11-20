@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 @section('title','Roles')
 @section('top_buttons')
-    <a class="btn btn-link btn-float text-default" href="{{route('roles.create')}}" role="button"><i class="fa fa-list"></i> Add New </a>
+
 @stop
 @section('content')
-
+    <a class="btn btn-link btn-float text-default" href="{{route('roles.create')}}" role="button"><i class="fa fa-list"></i> Add New </a>
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Roles</h3>
@@ -35,10 +35,9 @@
                                     <td>{{ $role->description }}</td>
                                     <td>{{ $role->created_at }}</td>
                                     <td>
-                                        {!!  Form::open()->delete()->route('roles.destroy',['id'=>$role->id])->attrs(['onsubmit'=>"return confirm('Do you want to remove this record?')"]) !!}
                                         <a href="{{route('roles.edit',['id'=>$role->id])}}" class="btn btn-info" ><i class="fa fa-edit"></i></a>
-                                        <button type="submit" class="btn btn-danger" ><i class="fa fa-remove"></i> Delete</button>
-                                        {!! Form::close() !!}
+                                        <a href="{{route('roles.destroy',['id'=>$role->id])}}" class="btn btn-danger" ><i class="fa fa-remove"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,7 +62,7 @@
     </section>
 @stop
 
-@section('custom_js')
+@section('js_after')
 
     <script>
         $(function () {

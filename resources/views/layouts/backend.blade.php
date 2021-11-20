@@ -344,6 +344,14 @@
 
   @yield('js_after')
   <script>
+      function checkall()
+      {
+          var selectall = document.getElementById("selectall");
+          var checkboxes = document.getElementsByClassName("checkAll");
+          for (i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = selectall.checked;
+          }
+      }
       $(document).ready(function () {
           jQuery(function () {
               Codebase.helpers('notify');

@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 use App\Models\Permission;
 use App\Models\Role;
@@ -12,9 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Route;
 class RoleController extends Controller
 {
-    public function __construct()
-    {
-    }
+
 
     public function index()
     {

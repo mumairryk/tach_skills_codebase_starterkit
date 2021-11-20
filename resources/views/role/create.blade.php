@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend')
 
 @section('title','Add Role')
 
@@ -11,8 +11,7 @@
                     <div class="card-body">
                         <!-- form start -->
                         {{--<form role="form">--}}
-                        @open(['model' => $row,'method' => 'POST','enctype'=>"multipart/form-data", 'route' => 'roles.store','novalidate' => true])
-
+                        @open(['method' => 'POST', 'route' => 'roles.store','enctype'=>"multipart/form-data",'novalidate' => true])
 
                         @include('role.form',['selected'=>[]])
                         {{--</form>--}}
