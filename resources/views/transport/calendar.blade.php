@@ -1,8 +1,6 @@
 @extends('layouts.backend')
 @section('css_after')
     <link rel="stylesheet" href="{{asset('js/plugins/fullcalendar/main.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css">
-    <link rel="stylesheet" href="{{asset('js/plugins/flatpickr/flatpickr.min.css')}}">
 @endsection
 @section('content')
     <div class="content">
@@ -47,13 +45,7 @@
 @section('js_after')
 
     <script src="{{asset('js/plugins/fullcalendar/main.min.js')}}"></script>
-    <script src="{{asset('js/pages/be_comp_calendar.min.js')}}"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="{{asset('js/plugins/flatpickr/flatpickr.min.js')}}"></script>
-    <script>jQuery(function(){Codebase.helpers(['flatpickr', 'datepicker', 'notify', 'maxlength', 'select2', 'rangeslider', 'tags-inputs']);});</script>
     <script>
         !(function () {
             function e(e, t) {
