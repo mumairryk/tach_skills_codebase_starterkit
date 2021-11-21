@@ -1,6 +1,8 @@
 @extends('layouts.backend')
 @section('css_after')
     <link rel="stylesheet" href="{{asset('js/plugins/flatpickr/flatpickr.min.css')}}">
+    <link rel="stylesheet" href="{{asset('js/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('js/plugins/jquery-tags-input/jquery.tagsinput.min.css')}}">
 @endsection
 @section('content')
 <div class="content">
@@ -31,10 +33,10 @@
                         @if (isset($row))
                             @php $user_roles = \Illuminate\Support\Facades\DB::table('role_user')->select('role_id')->where('user_id','=',$row->id)->pluck('role_id','role_id')->toArray()   @endphp
 
-                            @select('role_id[]','Select Role',$repository->roles(),$user_roles,['required'=>'required','multiple'=>'multiple','class'=>'form-control select2'])
+                            @select('role_id[]','Select Role',$repository->roles(),$user_roles,['required'=>'required','multiple'=>'multiple','class'=>'form-control js-select2'])
 
                         @else
-                            @select('role_id[]','Select Role',$repository->roles(),null,['required'=>'required','multiple'=>'multiple','class'=>'form-control select2'])
+                            @select('role_id[]','Select Role',$repository->roles(),null,['required'=>'required','multiple'=>'multiple','class'=>'form-control js-select2'])
                         @endif
                     </div>
                 @if(!isset($row))
@@ -55,6 +57,8 @@
 @stop
 @section('js_after')
     <script src="{{asset('js/plugins/flatpickr/flatpickr.min.js')}}"></script>
+    <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
+    <script src="{{asset('js/plugins/jquery-tags-input/jquery.tagsinput.min.js')}}"></script>
     <script>
         $(document).ready(function () {
         jQuery(function(){
@@ -62,4 +66,5 @@
                 ['flatpickr', 'datepicker', 'notify', 'maxlength', 'select2', 'rangeslider', 'tags-inputs']);
         });
     });
+    </script>
 @stop
