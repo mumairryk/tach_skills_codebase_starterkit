@@ -124,8 +124,6 @@
                                                         message: "Data Updated"
                                                     });
                                                 }});
-
-
                                         },
                                         events: {!! json_encode($data) !!},
                                     }).render();
