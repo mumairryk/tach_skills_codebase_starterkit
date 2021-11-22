@@ -1,6 +1,7 @@
 @extends('layouts.backend')
 @section('css_after')
     <link rel="stylesheet" href="{{asset('js/plugins/fullcalendar/main.min.css')}}">
+    <link rel="stylesheet" href="{{asset('js/plugins/flatpickr/flatpickr.min.css')}}">
 @endsection
 @section('content')
     <div class="content">
@@ -39,6 +40,47 @@
         <!-- END Calendar -->
     </div>
 
+
+
+    <div class="modal" id="crud_Modal"  role="dialog" aria-labelledby="modal-normal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            @open(['method' => 'POST', 'route' => 'transports.ajaxSubmit','enctype'=>"multipart/form-data",'novalidate' => true])
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary-dark">
+                        <h3 class="block-title" id="model_title">Add New Record</h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="si si-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="block-content">
+                        @hidden('id')
+                        @select('priority', 'Select Priority *',  [1=>'1',2=>'2',3=>'3',4=>'4'],null,['required','required'])
+                        @text('assignment','Assigment *',null,['required','required'])
+                        @textarea('comment',null,null,['required','required'])
+                        @date('date','Select Date *', null, ['class' => 'js-flatpickr form-control bg-white','required','required'])
+                        @close
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-alt-success" >
+                        <i class="fa fa-save"></i> Save
+                    </button>
+                </div>
+            </div>
+            @close
+        </div>
+    </div>
+
+
+
+
+
+
 @stop
 
 
@@ -47,6 +89,7 @@
     <script src="{{asset('js/plugins/fullcalendar/main.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+        var DAY_NAMES = ['ON CALL','MON','TUE','WED','THU','FRI','WEEK'];
         !(function () {
             function e(e, t) {
                 for (var n = 0; n < t.length; n++) {
@@ -97,11 +140,41 @@
                                     new FullCalendar.Calendar(document.getElementById("js-calendar"), {
                                         themeSystem: "bootstrap",
                                         firstDay: 1,
-                                        editable: !0,
+                                        editable: true,
                                         droppable: !0,
+                                        selectable: true,
+                                        dayHeaderContent: function(arg) {
+                                            return DAY_NAMES[arg.date.getDay()]
+                                        },
                                         headerToolbar: { left: "title", right: "prev,next today dayGridMonth,timeGridWeek,timeGridDay,listWeek" },
                                         drop: function (e) {
                                             e.draggedEl.parentNode.remove();
+                                        },
+                                        eventClick: function (calEvent, jsEvent, view) {
+                                            console.log(calEvent);
+
+
+
+                                            document.getElementById('priority').value=calEvent.event._def.extendedProps.priority;
+                                            document.getElementById('assignment').value=calEvent.event._def.title;
+                                            document.getElementById('comment').value=calEvent.event._def.extendedProps.comment;
+                                            document.getElementById('id').value=calEvent.event._def.publicId;;
+                                            document.getElementById('date').value=moment(calEvent.event._instance.range.start).format('YYYY-MM-DD');
+                                            document.getElementById('model_title').innerHTML="Edit Record";
+                                            $('#crud_Modal').modal('show');
+                                            // change the border color just for fun
+                                            $(this).css('border-color', 'red');
+                                        },
+
+                                        select: function (start, end, allDay) {
+
+                                            document.getElementById('priority').value="";
+                                            document.getElementById('assignment').value="";
+                                            document.getElementById('comment').value="";
+                                            document.getElementById('id').value="";
+                                            document.getElementById('date').value=start.startStr;
+                                            document.getElementById('model_title').innerHTML="Add New Record";
+                                            $('#crud_Modal').modal('show');
                                         },
                                         eventDrop:function (info)
                                         {
@@ -139,4 +212,6 @@
         })();
 
     </script>
+    <script src="{{asset('js/plugins/flatpickr/flatpickr.min.js')}}"></script>
+    <script>jQuery(function(){Codebase.helpers(['flatpickr', 'datepicker', 'notify', 'maxlength', 'select2', 'rangeslider', 'tags-inputs']);});</script>
 @endsection
