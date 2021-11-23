@@ -3,11 +3,12 @@
     <div class="content">
         <h2 class="content-heading">Roles List</h2>
         <div class="block">
-            <div class="block-header block-header-default">
+            <div class="block-header block-header-default" style="display: block;height: 60px;">
+                <a class="btn btn-primary float-right" href="{{route('roles.create')}}" role="button"><i class="fa fa-plus-circle"></i> Add New Role</a>
             </div>
             <div class="block-content block-content-full">
 
-                <a class="btn btn-primary" href="{{route('roles.create')}}" role="button"><i class="fa fa-plus-circle"></i> Add New Role</a>
+
 
                     <div class="table-responsive">
                         <table id="example1" class="table table-bordered table-striped">

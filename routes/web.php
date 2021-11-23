@@ -20,7 +20,7 @@ Route::match(['get', 'post'], '/dashboard', function(){
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
-
+Route::get('/install',[\App\Http\Controllers\UserController::class,'install'])->name('users.install');
 Auth::routes();
 
 Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function(){
