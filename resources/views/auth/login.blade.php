@@ -87,6 +87,17 @@
                     </div>
 
                   </div>
+                    <p align="center">
+                        @if(Session::has('success'))
+                            <h3 style="color: green;">Installation Successfully</h3>
+                            <h5>Please use the following credentials for login</h5>
+                            <h5>Email: admin@mail.com</h5>
+                            <h5>Password: Admin123</h5>
+                        @endif
+                        @if(Session::has('error'))
+                        <h3 style="color: red;">Users data already exit</h3>
+                        @endif
+                    </p>
                 </form>
               </div>
             </div>
