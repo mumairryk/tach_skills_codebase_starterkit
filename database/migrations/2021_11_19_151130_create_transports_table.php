@@ -19,6 +19,7 @@ class CreateTransportsTable extends Migration
             $table->text('assignment')->nullable();
             $table->text('comment')->nullable();
             $table->date('date');
+            $table->boolean('is_completed')->default(0);
             $table->timestamps();
         });
     }

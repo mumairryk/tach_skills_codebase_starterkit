@@ -57,6 +57,12 @@
                     </div>
                     <div class="block-content">
                         @hidden('id')
+
+                        <label class="css-control css-control-primary css-checkbox is_completed" style="display: none;">
+                            <input type="checkbox" name="is_completed" class="css-control-input" id="is_completed" checked="">
+                            <span class="css-control-indicator"></span> Completed
+                        </label>
+
                         @select('priority', 'Select Priority *',  [1=>'1',2=>'2',3=>'3',4=>'4'],null,['required','required'])
                         @text('assignment','Assigment *',null,['required','required'])
                         @textarea('comment',null,null,['required','required'])
@@ -151,9 +157,7 @@
                                             e.draggedEl.parentNode.remove();
                                         },
                                         eventClick: function (calEvent, jsEvent, view) {
-                                            console.log(calEvent);
-
-
+                                            console.log(calEvent.event._def.extendedProps);
 
                                             document.getElementById('priority').value=calEvent.event._def.extendedProps.priority;
                                             document.getElementById('assignment').value=calEvent.event._def.title;
@@ -161,6 +165,14 @@
                                             document.getElementById('id').value=calEvent.event._def.publicId;;
                                             document.getElementById('date').value=moment(calEvent.event._instance.range.start).format('YYYY-MM-DD');
                                             document.getElementById('model_title').innerHTML="Edit Record";
+
+                                            if(calEvent.event._def.extendedProps.is_completed){
+                                                $('.is_completed input').prop('checked', 'checked');
+                                            }else{
+                                                $('.is_completed input').prop('checked', false);
+                                            }
+
+                                            $('.is_completed').show();
                                             $('#crud_Modal').modal('show');
                                             // change the border color just for fun
                                             $(this).css('border-color', 'red');
@@ -174,6 +186,7 @@
                                             document.getElementById('id').value="";
                                             document.getElementById('date').value=start.startStr;
                                             document.getElementById('model_title').innerHTML="Add New Record";
+                                            $('.is_completed').hide();
                                             $('#crud_Modal').modal('show');
                                         },
                                         eventDrop:function (info)
@@ -190,7 +203,8 @@
                                                     });
                                                 }});
                                         },
-                                        events: {!! json_encode($data) !!},
+                                        events: {!!   json_encode($data) !!},
+
                                     }).render();
                                 },
                             },

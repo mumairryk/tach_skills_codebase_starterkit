@@ -102,7 +102,7 @@ class TransportController extends Controller
         return redirect()->route("transports.index")->with('success','Data Deleted');
     }
     public function calendar(){
-        $data_set = Transport::selectRaw('id,priority,assignment as title,comment,date as start')->get();
+        $data_set = Transport::selectRaw('id,is_completed,priority,assignment as title,comment,date as start')->get();
         $data=array();
         foreach ($data_set as $item)
         {
@@ -122,8 +122,9 @@ class TransportController extends Controller
             {
                 $color="#ef5350";
             }
-            $data[]=array('id'=>$item->id,'priority'=>$item->priority,'title'=>$item->title,'comment'=>$item->comment,'date'=>$item->start,'color'=>$color);
+            $data[]=array('id'=>$item->id, 'is_completed' => $item->is_completed,'priority'=>$item->priority,'title'=>$item->title,'comment'=>$item->comment,'date'=>$item->start,'color'=>$color);
         }
+
         return view('transport.calendar',compact('data'));
     }
     public function ajaxSubmit(Request $request)
@@ -131,12 +132,25 @@ class TransportController extends Controller
         if ($request->has('id') && $request->id!='')
         {
             $md = Transport::findOrFail($request->id);
+
+            if($request->is_completed){
+                $request->request->add(['is_completed' => 1]);
+            }else{
+                $request->request->add(['is_completed' => 0]);
+            }
+
             $md->update($request->all());
             return redirect()->back()->with('success','Data Updated');
 
         }
         else
         {
+
+            if($request->is_completed){
+                $request->request->add(['is_completed' => 1]);
+            }else{
+                $request->request->add(['is_completed' => 0]);
+            }
             $md = Transport::create($request->except('id'));
             return redirect()->back()->with('success','Data Saved');
         }
